@@ -30,7 +30,7 @@ class Product {
 
 		if (!this.price) return this;
 
-		if (this.sellIn < 0) {
+		if (this.sellIn < 0 && this.price > 1) {
 			this.price -= 2;
 			return this;
 		}

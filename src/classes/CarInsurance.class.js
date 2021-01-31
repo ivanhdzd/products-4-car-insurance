@@ -20,10 +20,13 @@ class CarInsurance {
 	 * @returns {Product[]} Products list with it prices already updated.
 	 */
 	updatePrice() {
+		const products = [];
 		for (let i = 0; i < this.products.length; i++) {
-			this.products[i] = updateProductPrice(this.products[i]);
+			const product = updateProductPrice(this.products[i]);
+			products.push(product);
 		}
-		return this.products;
+		this.products = products;
+		return products;
 	}
 }
 
