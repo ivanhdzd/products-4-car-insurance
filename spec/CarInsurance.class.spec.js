@@ -1,0 +1,32 @@
+const { expect } = require('chai');
+
+const { CarInsurance } = require('../src/classes/CarInsurance.class');
+const { PRODUCTS_FIXTURE } = require('../fixtures/products.fixture.js');
+
+const lastInputIndex = PRODUCTS_FIXTURE.length - 2;
+const lastOutputIndex = PRODUCTS_FIXTURE.length - 1;
+
+console.log(PRODUCTS_FIXTURE);
+
+describe(`Testing '${CarInsurance.name}' class`, () => {
+	for (let i = 0, j = 1; i <= lastInputIndex, j <= lastOutputIndex; i++, j++) {
+		const inputDay = PRODUCTS_FIXTURE[i];
+		const expectationDay = PRODUCTS_FIXTURE[j];
+		const carInsurance = new CarInsurance(inputDay);
+		const outputDay = carInsurance.updatePrice();
+
+		describe(`Should compare day ${i} with day ${j}`, () => {
+			for (let k = 0; k < inputDay.length; k++) {
+				const productExpectation = expectationDay[k];
+				const productResult = outputDay[k];
+				const { name } = productResult;
+
+				it(`Should update \`${name}\` product prices`, () => {
+					expect(productExpectation.name).equal(productResult.name);
+					expect(productExpectation.sellIn).equal(productResult.sellIn);
+					expect(productExpectation.price).equal(productResult.price);
+				});
+			}
+		});
+	}
+});

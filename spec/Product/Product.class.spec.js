@@ -1,6 +1,6 @@
 const { expect } = require('chai');
 
-const { Product } = require('../../src/Product/Product.class');
+const { Product } = require('../../src/classes/Product/Product.class');
 
 describe(`Testing '${Product.name}' class`, () => {
 	it('Should update product price where it `sellIn` and `price` values is greater than 1', () => {
@@ -12,7 +12,7 @@ describe(`Testing '${Product.name}' class`, () => {
 	});
 
 	it('Should update product price where it `sellIn` value is 0', () => {
-		const product = new Product('Medium Coverage', 0, 10);
+		const product = new Product('Low Coverage', 0, 10);
 		product.updatePrice();
 
 		expect(product.sellIn).equal(-1);
@@ -28,7 +28,7 @@ describe(`Testing '${Product.name}' class`, () => {
 	});
 
 	it('Should update product price where it `price` value is 0', () => {
-		const product = new Product('Low Coverage', 5, 0);
+		const product = new Product('Medium Coverage', 5, 0);
 		product.updatePrice();
 
 		expect(product.sellIn).equal(4);
