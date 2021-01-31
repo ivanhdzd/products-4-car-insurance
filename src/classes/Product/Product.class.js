@@ -1,4 +1,7 @@
 class Product {
+	/** Maximum price permitted */
+	maxPrice = 50;
+
 	/**
 	 * Build new generic product instance.
 	 * @param {string} name for this product.

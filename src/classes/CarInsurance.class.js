@@ -1,5 +1,9 @@
-const { PRODUCT_COVERAGE } = require('../enums/ProductCoverage.enum');
 const { Product } = require('./Product/Product.class');
+const { ProductFullCoverage } = require('./Product/ProductFullCoverage.class');
+const { ProductSpecialFullCoverage } = require('./Product/ProductSpecialFullCoverage.class');
+const { ProductMegaCoverage } = require('./Product/ProductMegaCoverage.class');
+const { ProductSuperSale } = require('./Product/ProductSuperSale.class');
+const { PRODUCT_COVERAGE } = require('../enums/ProductCoverage.enum');
 
 class CarInsurance {
 	/**
@@ -28,26 +32,27 @@ module.exports = {
 };
 
 /**
-* Update price for a product.
-* @param {Product} product item.
-* @returns {Product} item with it price already updated.
-*/
+ * Update price for a product.
+ * @param {Product} product item.
+ * @returns {Product} item with it price already updated.
+ */
 function updateProductPrice({ name, sellIn, price }) {
 	switch(name) {
-		case PRODUCT_COVERAGE.MEGA_COVERAGE: // TODO: Implements this case
-			const productMegaCoverage = new Product(name, sellIn, price);
-			return productMegaCoverage.updatePrice();
 
-		case PRODUCT_COVERAGE.FULL_COVERAGE: // TODO: Implements this case
-			const productFullCoverage = new Product(name, sellIn, price);
+		case PRODUCT_COVERAGE.FULL_COVERAGE:
+			const productFullCoverage = new ProductFullCoverage(name, sellIn, price);
 			return productFullCoverage.updatePrice();
 
-		case PRODUCT_COVERAGE.SPECIAL_FULL_COVERAGE: // TODO: Implements this case
-			const productSpecialFullCoverage = new Product(name, sellIn, price);
+		case PRODUCT_COVERAGE.SPECIAL_FULL_COVERAGE:
+			const productSpecialFullCoverage = new ProductSpecialFullCoverage(name, sellIn, price);
 			return productSpecialFullCoverage.updatePrice();
 
-		case PRODUCT_COVERAGE.SUPER_SALE: // TODO: Implements this case
-			const productSuperSale = new Product(name, sellIn, price);
+		case PRODUCT_COVERAGE.MEGA_COVERAGE:
+			const productMegaCoverage = new ProductMegaCoverage(name, sellIn, price);
+			return productMegaCoverage.updatePrice();
+
+		case PRODUCT_COVERAGE.SUPER_SALE:
+			const productSuperSale = new ProductSuperSale(name, sellIn, price);
 			return productSuperSale.updatePrice();
 
 		default:
