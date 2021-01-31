@@ -15,13 +15,13 @@ describe(`Testing '${CarInsurance.name}' class`, () => {
 			const expectationDay = PRODUCTS_FIXTURE[j];
 			const carInsurance = new CarInsurance(inputDay);
 			const outputDay = carInsurance.updatePrice();
-	
+
 			describe(`Should compare day ${i} with day ${j}`, () => {
 				for (let k = 0; k < inputDay.length; k++) {
 					const productExpectation = expectationDay[k];
 					const productResult = outputDay[k];
 					const { name } = productResult;
-	
+
 					it(`Should update \`${name}\` product prices`, () => {
 						expect(productExpectation.name).equal(productResult.name);
 						expect(productExpectation.sellIn).equal(productResult.sellIn);

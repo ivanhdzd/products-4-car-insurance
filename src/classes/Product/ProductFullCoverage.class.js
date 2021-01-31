@@ -17,7 +17,13 @@ class ProductFullCoverage extends Product {
 	 * @returns {Product} Current product instance with it prices already updated.
 	 */
 	updatePrice() {
-		return super.updatePrice();
+		--this.sellIn;
+		this.price += this.sellIn < 0 ? 2 : 1;
+
+		if (this.price > this.maxPrice) {
+			this.price = this.maxPrice;
+		}
+		return this;
 	}
 }
 
