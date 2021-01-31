@@ -2,6 +2,7 @@ const { expect } = require('chai');
 
 const { CarInsurance } = require('../src/classes/CarInsurance.class');
 const PRODUCTS_FIXTURE = require('../fixtures/products.fixture.json');
+const { Product } = require('../src/classes/Product/Product.class');
 
 const lastInputIndex = PRODUCTS_FIXTURE.length - 2;
 const lastOutputIndex = PRODUCTS_FIXTURE.length - 1;
@@ -30,11 +31,23 @@ describe(`Testing '${CarInsurance.name}' class`, () => {
 		}
 	});
 
-	describe('Should test with empty products historical list', () => {
-		it('Should test an empty products list', () => {
-			const carInsurance = new CarInsurance();
-			const outputDay = carInsurance.updatePrice();
-			expect(outputDay.length).equal(0);
-		});
+	it('Should get an exception trying to set an object as products list', () => {
+		expect(() => new CarInsurance({ hello: 'world' })).to.throw();
+	});
+
+	it('Should get an exception trying to set bad products list', () => {
+		expect(() => new CarInsurance([{ hello: 'world' }])).to.throw();
+	});
+
+	it('Should set an instance of `Products` class inside products list', () => {
+		const product = new Product('Low Coverage', 8, 16);
+		const carInsurance = new CarInsurance([product]);
+		expect(carInsurance.products.length).equal(1);
+	});
+
+	it('Should test an empty products list', () => {
+		const carInsurance = new CarInsurance();
+		const outputDay = carInsurance.updatePrice();
+		expect(outputDay.length).equal(0);
 	});
 });

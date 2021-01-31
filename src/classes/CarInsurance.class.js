@@ -4,6 +4,7 @@ const { ProductSpecialFullCoverage } = require('./Product/ProductSpecialFullCove
 const { ProductMegaCoverage } = require('./Product/ProductMegaCoverage.class');
 const { ProductSuperSale } = require('./Product/ProductSuperSale.class');
 const { PRODUCT_COVERAGE } = require('../enums/ProductCoverage.enum');
+const { schema4Products } = require('../schemas/Product.schema');
 
 class CarInsurance {
 	/**
@@ -12,7 +13,21 @@ class CarInsurance {
 	 * @returns {CarInsurance} Car insurance instance.
 	 */
 	constructor(products = []) {
-		this.products = products;
+		if (!Array.isArray(products)) {
+			throw new Error(`Products is not an array: ${typeof products}`);
+		}
+
+		if (!products.length) {
+			this.products = [];
+			return;
+		}
+
+		const { error, value } = schema4Products.validate(products);
+		if (error) {
+			console.error(error);
+			throw new Error(error.message);
+		}
+		this.products = value;
 	}
 
 	/**
