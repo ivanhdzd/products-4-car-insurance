@@ -7,7 +7,7 @@ class ProductMegaCoverage extends Product {
 	}
 	/** @override SET Maximum price permitted */
 	set maxPrice(_) {
-		console.warn('[%s] Cannot modify `maxPrice` because it\'s only readonly value: %d', this.constructor.name, this.maxPrice);
+		// console.warn('[%s] Cannot modify `maxPrice` because it\'s only readonly value: %d', this.constructor.name, this.maxPrice);
 	}
 
 	/**
