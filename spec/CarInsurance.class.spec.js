@@ -6,8 +6,6 @@ const { PRODUCTS_FIXTURE } = require('../fixtures/products.fixture.js');
 const lastInputIndex = PRODUCTS_FIXTURE.length - 2;
 const lastOutputIndex = PRODUCTS_FIXTURE.length - 1;
 
-// console.log(PRODUCTS_FIXTURE);
-
 describe(`Testing '${CarInsurance.name}' class`, () => {
 	describe('Should test with full products historical list', () => {
 		for (let i = 0, j = 1; i <= lastInputIndex, j <= lastOutputIndex; i++, j++) {
@@ -18,7 +16,6 @@ describe(`Testing '${CarInsurance.name}' class`, () => {
 
 			describe(`Should compare day ${i} with day ${j}`, () => {
 				for (let k = 0; k < inputDay.length; k++) {
-					// const productEInitial = inputDay[k];
 					const productExpectation = expectationDay[k];
 					const productResult = outputDay[k];
 					const { name } = productResult;

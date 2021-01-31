@@ -28,14 +28,16 @@ class Product {
 	updatePrice() {
 		--this.sellIn;
 
-		if (!this.price) return this;
-
-		if (this.sellIn < 0 && this.price > 1) {
+		if (this.sellIn < 0) {
 			this.price -= 2;
-			return this;
+		} else {
+			--this.price;
 		}
 
-		--this.price;
+		if (this.price < 0) {
+			this.price = 0;
+		}
+
 		return this;
 	}
 }

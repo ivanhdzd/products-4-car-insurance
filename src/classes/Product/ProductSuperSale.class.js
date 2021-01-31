@@ -17,7 +17,19 @@ class ProductSuperSale extends Product {
 	 * @returns {Product} Current product instance with it prices already updated.
 	 */
 	updatePrice() {
-		return super.updatePrice();
+		--this.sellIn;
+
+		if (this.sellIn < 0) {
+			this.price -= 4;
+		} else {
+			this.price -= 2;
+		}
+
+		if (this.price < 0) {
+			this.price = 0;
+		}
+
+		return this;
 	}
 }
 
