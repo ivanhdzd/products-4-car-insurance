@@ -11,6 +11,17 @@ describe(`Testing '${Product.name}' class`, () => {
 		expect(product.price).equal(9);
 	});
 
+	it('Should update product price and try to modify it `maxPrice` value', () => {
+		const product = new Product('Low Coverage', 5, 10);
+		product.maxPrice = 80;
+		product.updatePrice();
+		const maxPrice = product.maxPrice;
+
+		expect(maxPrice).equal(50);
+		expect(product.sellIn).equal(4);
+		expect(product.price).equal(9);
+	});
+
 	it('Should update product price where it `sellIn` value is 0', () => {
 		const product = new Product('Low Coverage', 0, 10);
 		product.updatePrice();

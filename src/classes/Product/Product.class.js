@@ -1,6 +1,12 @@
 class Product {
-	/** Maximum price permitted */
-	maxPrice = 50;
+	/** GET Maximum price permitted */
+	get maxPrice() {
+		return 50;
+	}
+	/** SET Maximum price permitted */
+	set maxPrice(_) {
+		console.warn('[%s] Cannot modify `maxPrice` because it\'s only readonly value: %d', this.constructor.name, this.maxPrice);
+	}
 
 	/**
 	 * Build new generic product instance.

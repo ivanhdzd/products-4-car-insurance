@@ -1,8 +1,14 @@
 const { Product } = require('./Product.class');
 
 class ProductMegaCoverage extends Product {
-	/** @override Maximum price permitted */
-	maxPrice = 80;
+	/** @override GET Maximum price permitted */
+	get maxPrice() {
+		return 80;
+	}
+	/** @override SET Maximum price permitted */
+	set maxPrice(_) {
+		console.warn('[%s] Cannot modify `maxPrice` because it\'s only readonly value: %d', this.constructor.name, this.maxPrice);
+	}
 
 	/**
 	 * Build new product with mega coverage instance.
@@ -13,8 +19,6 @@ class ProductMegaCoverage extends Product {
 	 */
     constructor(name, sellIn, price) {
 		super(name, sellIn, price);
-
-		this.maxPrice = 80;
 		this.price = this.maxPrice;
 	}
 
