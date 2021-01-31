@@ -7,7 +7,7 @@ console.time('TXT file parsed');
 
 const FILEPATH_ORIGIN = resolve(__dirname, '..', 'products_after_30_days.txt');
 const DIR_PATH_DESTINATION = resolve(__dirname, '..', 'fixtures');
-const FILEPATH_DESTINATION = join(DIR_PATH_DESTINATION, 'products.fixture.js');
+const FILEPATH_DESTINATION = join(DIR_PATH_DESTINATION, 'products.fixture.json');
 
 if (!existsSync(FILEPATH_ORIGIN)) {
 	console.error('File `%s` not found.', FILEPATH_ORIGIN);
@@ -29,11 +29,7 @@ if (!existsSync(DIR_PATH_DESTINATION)) {
 }
 
 const output = JSON.stringify(daysData, null, '\t');
-writeFileSync(FILEPATH_DESTINATION, `const PRODUCTS_FIXTURE = Object.freeze(${output});
-
-module.exports = {
-	PRODUCTS_FIXTURE,
-};`, { encoding: 'utf-8' });
+writeFileSync(FILEPATH_DESTINATION, output, { encoding: 'utf-8' });
 
 console.timeEnd('TXT file parsed');
 process.exit();
@@ -63,10 +59,6 @@ function mapDayArrayItems(rows) {
 			acc[key] = value;
 			return acc;
 		}, { }));
-}
-
-function buildOutput(jsonStr) {
-	return 
 }
 
 //#endregion FUNCTIONS

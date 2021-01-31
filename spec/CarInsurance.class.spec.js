@@ -1,7 +1,7 @@
 const { expect } = require('chai');
 
 const { CarInsurance } = require('../src/classes/CarInsurance.class');
-const { PRODUCTS_FIXTURE } = require('../fixtures/products.fixture.js');
+const PRODUCTS_FIXTURE = require('../fixtures/products.fixture.json');
 
 const lastInputIndex = PRODUCTS_FIXTURE.length - 2;
 const lastOutputIndex = PRODUCTS_FIXTURE.length - 1;
