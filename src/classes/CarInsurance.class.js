@@ -19,7 +19,7 @@ class CarInsurance {
 
 		if (!products.length) {
 			this.products = [];
-			return;
+			return this;
 		}
 
 		const { error, value } = schema4Products.validate(products);
