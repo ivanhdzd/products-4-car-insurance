@@ -38,7 +38,6 @@ module.exports = {
  */
 function updateProductPrice({ name, sellIn, price }) {
 	switch(name) {
-
 		case PRODUCT_COVERAGE.FULL_COVERAGE:
 			const productFullCoverage = new ProductFullCoverage(name, sellIn, price);
 			return productFullCoverage.updatePrice();

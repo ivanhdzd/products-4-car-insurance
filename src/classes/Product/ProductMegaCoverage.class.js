@@ -12,7 +12,10 @@ class ProductMegaCoverage extends Product {
 	 * @returns {Product} Product instance.
 	 */
     constructor(name, sellIn, price) {
-        super(name, sellIn, price);
+		super(name, sellIn, price);
+
+		this.maxPrice = 80;
+		this.price = this.maxPrice;
 	}
 
 	/**
@@ -20,7 +23,7 @@ class ProductMegaCoverage extends Product {
 	 * @returns {Product} Current product instance with it prices already updated.
 	 */
 	updatePrice() {
-		return super.updatePrice();
+		return this;
 	}
 }
 
